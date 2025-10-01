@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About Project</title>
+    <style>
+        body {
+            background-image: url("{{ url_for('static', filename='images/about_bg.png') }}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            font-family: Arial, sans-serif;
+            color: #fff;
+            text-align: center;
+        }
+        .content {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+            width: 70%;
+            margin: 50px auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>About the Project</h1>
+        <p>This project uses Machine Learning to predict employee performance 
+           based on various workplace features like productivity, incentives, 
+           working hours, and more.</p>
+        <p>We built the model using multiple algorithms (Linear Regression, 
+           Random Forest, XGBoost) and selected the best performer for predictions.</p>
+    </div>
+</body>
+</html>
