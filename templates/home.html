@@ -1,75 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Employee Performance - Home</title>
-    <style>
-        body {
-            background-image: url("{{ url_for('static', filename='images/home_bg.png') }}");
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            font-family: Arial, sans-serif;
-            color: #fff;
-        }
-        .form-container {
-            background: rgba(0, 0, 0, 0.6);
-            padding: 20px;
-            border-radius: 10px;
-            width: 60%;
-            margin: 50px auto;
-        }
-        label, input, select {
-            display: block;
-            margin: 10px 0;
-        }
-    </style>
-</head>
-<body>
-    <div class="form-container">
-        <h1>Enter Employee Details</h1>
-        <form action="/predict" method="post">
-            <label>Quarter:</label>
-            <input type="number" name="Quarter" required>
+{% extends "base.html" %}
 
-            <label>Department:</label>
-            <input type="text" name="Department" required>
+{% block content %}
+<div style="background: url('{{ url_for('static', filename='images/home_bg.png') }}') no-repeat center center fixed;
+            background-size: cover; 
+            height: 100vh; 
+            display:flex; 
+            justify-content:center; 
+            align-items:center;">
 
-            <label>Day:</label>
-            <input type="text" name="Day" required>
+  <div class="form-container" style="background: rgba(0,0,0,0.6); padding:20px; border-radius:10px; width:60%; color:white;">
+    <h1>Enter Employee Details</h1>
+    <form action="/predict" method="post">
+        <!-- your form fields -->
+        <label>Quarter:</label>
+        <input type="number" name="Quarter" required>
 
-            <label>Team:</label>
-            <input type="number" name="Team" required>
+        <label>Department:</label>
+        <input type="text" name="Department" required>
 
-            <label>Targeted Productivity:</label>
-            <input type="number" step="0.01" name="Targeted Productivity" required>
+        <label>Day:</label>
+        <input type="text" name="Day" required>
 
-            <label>SMV:</label>
-            <input type="number" step="0.01" name="SMV" required>
+        <label>Team:</label>
+        <input type="number" name="Team" required>
 
-            <label>Incentive:</label>
-            <input type="number" name="Incentive" required>
+        <label>Targeted Productivity:</label>
+        <input type="number" step="0.01" name="Targeted Productivity" required>
 
-            <label>Over Time:</label>
-            <input type="number" name="Over Time" required>
+        <label>SMV:</label>
+        <input type="number" step="0.01" name="SMV" required>
 
-            <label>Idle Time:</label>
-            <input type="number" name="Idle Time" required>
+        <label>Incentive:</label>
+        <input type="number" name="Incentive" required>
 
-            <label>Idle Men:</label>
-            <input type="number" name="Idle Men" required>
+        <label>Over Time:</label>
+        <input type="number" name="Over Time" required>
 
-            <label>No. of Style Change:</label>
-            <input type="number" name="No. of Style Change" required>
+        <label>Idle Time:</label>
+        <input type="number" name="Idle Time" required>
 
-            <label>No. of Workers:</label>
-            <input type="number" name="No. of Workers" required>
+        <label>Idle Men:</label>
+        <input type="number" name="Idle Men" required>
 
-            <label>Month:</label>
-            <input type="text" name="Month" required>
+        <label>No. of Style Change:</label>
+        <input type="number" name="No. of Style Change" required>
 
-            <button type="submit">SUBMIT</button>
-        </form>
-    </div>
-</body>
-</html>
+        <label>No. of Workers:</label>
+        <input type="number" name="No. of Workers" required>
+
+        <label>Month:</label>
+        <input type="text" name="Month" required>
+
+        <button type="submit">SUBMIT</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

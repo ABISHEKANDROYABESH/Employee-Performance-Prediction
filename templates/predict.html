@@ -1,37 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Prediction Result</title>
-    <style>
-        body {
-            background-image: url("{{ url_for('static', filename='images/predict_bg.png') }}");
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            font-family: Arial, sans-serif;
-            color: #fff;
-            text-align: center;
-        }
-        .result {
-            background: rgba(0, 0, 0, 0.6);
-            padding: 30px;
-            border-radius: 10px;
-            width: 60%;
-            margin: 100px auto;
-        }
-        a {
-            color: yellow;
-            text-decoration: none;
-            font-weight: bold;
-        }
-    </style>
-</head>
-<body>
-    <div class="result">
-        <h1>Prediction Result</h1>
-        <p>{{ prediction_text }}</p>
-        <a href="/home">Go Back</a>
-    </div>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block content %}
+<div style="padding: 40px; text-align:center;">
+  <h1>Prediction Result</h1>
+  <p>The predicted employee performance is: <b>{{ prediction }}</b></p>
+</div>
+{% endblock %}
