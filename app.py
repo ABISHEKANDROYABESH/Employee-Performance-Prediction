@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 
-app = Flask(__name__)
+app = Flask(__name__)   # ✅ app is defined first
 
 @app.route('/')
 @app.route('/home')
@@ -31,9 +31,14 @@ def predict():
             "Month": request.form["Month"],
         }
 
-        # For now, just show a dummy prediction
-        # Later you can replace this with your ML model
-        prediction = "High Performance" if float(data["Targeted Productivity"]) > 0.5 else "Low Performance"
+        # Simple rule-based prediction for testing
+        prod = float(data["Targeted Productivity"])
+        if prod < 0.3:
+            prediction = "Low Performance"
+        elif prod < 0.7:
+            prediction = "Medium Performance"
+        else:
+            prediction = "High Performance"
 
         return render_template("predict.html", prediction=prediction)
     else:
