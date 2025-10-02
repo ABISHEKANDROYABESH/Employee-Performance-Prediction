@@ -2,21 +2,78 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Employee Performance</title>
+    <title>{% block title %}Employee Performance{% endblock %}</title>
     <style>
-        body { margin: 0; font-family: Arial, sans-serif; }
-        nav { background: #333; padding: 10px; }
-        nav a { color: white; margin: 0 15px; text-decoration: none; }
-        nav a:hover { text-decoration: underline; }
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            /* Background image */
+            background: url("{{ url_for('static', filename='images/home_bg.png') }}") no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+        }
+        .navbar {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            text-align: center;
+        }
+        .navbar a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .navbar a:hover {
+            color: #ffd700;
+        }
+        .container {
+            background: rgba(0, 0, 0, 0.6); /* Transparent black */
+            padding: 20px;
+            border-radius: 10px;
+            width: 60%;
+            margin: 40px auto;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: none;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #218838;
+        }
     </style>
 </head>
 <body>
-    <nav>
-        <a href="{{ url_for('home') }}">Home</a>
-        <a href="{{ url_for('predict') }}">Predict</a>
-        <a href="{{ url_for('about') }}">About</a>
-    </nav>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="/home">Home</a>
+        <a href="/about">About</a>
+        <a href="/predict">Predict</a>
+        <a href="/submit">Submit</a>
+    </div>
 
-    {% block content %}{% endblock %}
+    <!-- Page Content -->
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
 </body>
 </html>
