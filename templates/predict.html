@@ -1,8 +1,9 @@
 {% extends "base.html" %}
+{% set background = 'images/predict_bg.png' %}
 
-{% block title %}Prediction Result{% endblock %}
+{% block title %}Predict{% endblock %}
 
 {% block content %}
 <h2>Prediction Result</h2>
-<p><strong>Predicted Performance:</strong> {{ prediction }}</p>
+<p>{{ prediction_text }}</p>
 {% endblock %}

@@ -1,72 +1,12 @@
 {% extends "base.html" %}
+{% set background = 'images/home_bg.png' %}
 
-{% block title %}Home - Employee Performance{% endblock %}
+{% block title %}Home{% endblock %}
 
 {% block content %}
 <h2>Enter Employee Details</h2>
 <form action="/predict" method="post">
-    <label>Quarter:</label>
-    <input type="number" name="Quarter" required>
-
-    <label>Department:</label>
-    <select name="Department" required>
-        <option value="sewing">Sewing</option>
-        <option value="finishing">Finishing</option>
-    </select>
-
-    <label>Day:</label>
-    <select name="Day" required>
-        <option value="Monday">Monday</option>
-        <option value="Tuesday">Tuesday</option>
-        <option value="Wednesday">Wednesday</option>
-        <option value="Thursday">Thursday</option>
-        <option value="Friday">Friday</option>
-        <option value="Saturday">Saturday</option>
-    </select>
-
-    <label>Team:</label>
-    <input type="number" name="Team" required>
-
-    <label>Targeted Productivity:</label>
-    <input type="number" step="0.01" name="Targeted Productivity" required>
-
-    <label>SMV:</label>
-    <input type="number" step="0.01" name="SMV" required>
-
-    <label>Incentive:</label>
-    <input type="number" name="Incentive" required>
-
-    <label>Over Time:</label>
-    <input type="number" name="Over Time" required>
-
-    <label>Idle Time:</label>
-    <input type="number" name="Idle Time" required>
-
-    <label>Idle Men:</label>
-    <input type="number" name="Idle Men" required>
-
-    <label>No. of Style Change:</label>
-    <input type="number" name="No. of Style Change" required>
-
-    <label>No. of Workers:</label>
-    <input type="number" name="No. of Workers" required>
-
-    <label>Month:</label>
-    <select name="Month" required>
-        <option value="January">January</option>
-        <option value="February">February</option>
-        <option value="March">March</option>
-        <option value="April">April</option>
-        <option value="May">May</option>
-        <option value="June">June</option>
-        <option value="July">July</option>
-        <option value="August">August</option>
-        <option value="September">September</option>
-        <option value="October">October</option>
-        <option value="November">November</option>
-        <option value="December">December</option>
-    </select>
-
-    <button type="submit">SUBMIT</button>
+   <!-- form fields -->
+   <button type="submit">SUBMIT</button>
 </form>
 {% endblock %}
