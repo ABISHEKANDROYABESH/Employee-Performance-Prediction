@@ -2,38 +2,64 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Employee Performance{% endblock %}</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
             margin: 0;
-            padding: 0;
-            background: url('{{ url_for("static", filename=background) }}') no-repeat center center fixed;
+            font-family: Arial, sans-serif;
+            /* Background image */
+            background: url("{{ url_for('static', filename='images/home_bg.png') }}") no-repeat center center fixed;
             background-size: cover;
+            color: #fff;
         }
         .navbar {
-            background: rgba(0,0,0,0.8);
+            background: rgba(0, 0, 0, 0.7);
             padding: 10px;
+            text-align: center;
         }
         .navbar a {
             color: white;
-            margin-right: 20px;
+            margin: 0 15px;
             text-decoration: none;
+            font-weight: bold;
+        }
+        .navbar a:hover {
+            color: #ffd700;
         }
         .container {
+            background: rgba(0, 0, 0, 0.6); /* Transparent black */
+            padding: 20px;
+            border-radius: 10px;
             width: 60%;
             margin: 40px auto;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.3);
         }
-        h2 { text-align: center; margin-bottom: 20px; }
-        label { display: block; margin-top: 10px; }
-        input, select { width: 100%; padding: 8px; margin-top: 5px; border-radius: 5px; border: 1px solid #ccc; }
-        button { margin-top: 20px; padding: 10px 20px; background: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer; }
-        button:hover { background: #218838; }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: none;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #218838;
+        }
     </style>
 </head>
 <body>
@@ -45,6 +71,7 @@
         <a href="/submit">Submit</a>
     </div>
 
+    <!-- Page Content -->
     <div class="container">
         {% block content %}{% endblock %}
     </div>

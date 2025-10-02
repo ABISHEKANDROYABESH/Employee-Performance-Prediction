@@ -1,45 +1,47 @@
 from flask import Flask, render_template, request
-import pickle
-import os
 
 app = Flask(__name__)
 
-# ✅ Define DummyModel so pickle can load it
-class DummyModel:
-    def predict(self, X):
-        return ["High Performance"]  # Default dummy output
-
-# ✅ Safe load of model.pkl
-model_path = "model.pkl"
-if os.path.exists(model_path):
-    with open(model_path, "rb") as f:
-        try:
-            model = pickle.load(f)
-        except Exception:
-            # Fallback to DummyModel if pickle fails
-            model = DummyModel()
-else:
-    model = DummyModel()
-
-@app.route("/")
+@app.route('/')
+@app.route('/home')
 def home():
     return render_template("home.html")
 
-@app.route("/predict", methods=["POST"])
-def predict():
-    if request.method == "POST":
-        try:
-            # Example: just using dummy features
-            features = [int(x) for x in request.form.values()]
-            prediction = model.predict([features])[0]
-        except Exception as e:
-            prediction = f"Error: {str(e)}"
-
-        return render_template("result.html", prediction=prediction)
-
-@app.route("/about")
+@app.route('/about')
 def about():
     return render_template("about.html")
+
+@app.route('/predict', methods=["GET", "POST"])
+def predict():
+    if request.method == "POST":
+        # Collect form data
+        data = {
+            "Quarter": request.form["Quarter"],
+            "Department": request.form["Department"],
+            "Day": request.form["Day"],
+            "Team": request.form["Team"],
+            "Targeted Productivity": request.form["Targeted Productivity"],
+            "SMV": request.form["SMV"],
+            "Incentive": request.form["Incentive"],
+            "Over Time": request.form["Over Time"],
+            "Idle Time": request.form["Idle Time"],
+            "Idle Men": request.form["Idle Men"],
+            "No. of Style Change": request.form["No. of Style Change"],
+            "No. of Workers": request.form["No. of Workers"],
+            "Month": request.form["Month"],
+        }
+
+        # For now, just show a dummy prediction
+        # Later you can replace this with your ML model
+        prediction = "High Performance" if float(data["Targeted Productivity"]) > 0.5 else "Low Performance"
+
+        return render_template("predict.html", prediction=prediction)
+    else:
+        return render_template("home.html")
+
+@app.route('/submit')
+def submit():
+    return render_template("submit.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
